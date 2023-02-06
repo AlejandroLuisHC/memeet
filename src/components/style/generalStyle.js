@@ -36,7 +36,7 @@ export const GlobalStyle = createGlobalStyle`
 export const DivMain = styled.div`
     display: grid;
     min-height: 100vh;
-    grid-template: 60px 1fr 50px / 1fr;
+    grid-template: 60px 1fr 30px / 1fr;
 
     @media ${device.desktop}{
         grid-template: 80px 1fr 50px / 1fr 5fr 1fr; 
