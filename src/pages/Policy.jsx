@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
 
 const Policy = () => {
@@ -75,4 +75,4 @@ const Policy = () => {
     )
 }
 
-export default Policy
+export default memo(Policy)

@@ -1,18 +1,27 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
+import { useForm } from 'react-hook-form'
 import { Toaster } from 'react-hot-toast'
+import { useOutletContext } from 'react-router-dom'
 import { getPublicData } from '../api'
 import MemeCard from '../components/pages_components/landing/MemeCard'
 
+import ModalUpload from '../components/pages_components/landing/ModalUpload'
+
 const Landing = () => {
-    const { data: memes, status } = useQuery(
+    const [Modal, , close] = useOutletContext()
+    const { data: memes, status, refetch } = useQuery(
         ['getPublicData', 'memes'],
         () => getPublicData('memes')
     )
-    
+    const { data: tags, status: statusTags } = useQuery(
+        ['getPublicData', 'tags'],
+        () => getPublicData('tags')
+    )
+
     return (
-        status === 'loading' ? <div>Loading...</div> :
-            status === 'error' ? <div>Error</div> :
+        (status === 'loading' || statusTags === 'loading') ? <div>Loading...</div> :
+            (status === 'error' || statusTags === 'error') ? <div>Error</div> :
                 <div>
                     {memes?.map(meme => {
                         return <MemeCard key={meme._id}
@@ -26,7 +35,14 @@ const Landing = () => {
                         position="bottom-right"
                         reverseOrder={false}
                     />
-                </div>
+                    <ModalUpload 
+                        memes={memes}
+                        tags={tags}
+                        Modal={Modal}
+                        close={close}
+                        refetch={refetch}
+                    />
+                </div >
     )
 }
 

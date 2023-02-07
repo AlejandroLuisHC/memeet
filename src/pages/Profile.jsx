@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { DivProfile, ImgProfile, InputImg, LabelUpdateImg, PProfileData, SpanData } from '../components/style/profileStyle'
 import { IoMdCloudUpload } from 'react-icons/io'
@@ -18,13 +18,14 @@ const Profile = () => {
     const {
         register,
         handleSubmit,
+        formState: { errors },
     } = useForm();
 
     const updateUserImg = async ({
         image,
         name
     }) => {
-        const updatedData = { 
+        const updatedData = {
             img: image || null,
             name: name || null
         }
@@ -46,12 +47,17 @@ const Profile = () => {
                     <IoMdCloudUpload /> Update image
                     <InputImg
                         type="file"
-                        {...register("image")}
+                        {...register("image", {
+                            required: false,
+                            validate: value => value[0].type === "image/jpeg" || value[0].type === "image/png" || value[0].type === "image/webp"
+                        }
+                        )}
                     />
                 </LabelUpdateImg>
+                {errors.image && <p>Only images are allowed</p>}
             </form>
         </DivProfile>
     )
 }
 
-export default Profile
+export default memo(Profile)

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
     BtnAddMeme,
@@ -16,7 +16,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useNavigate } from 'react-router-dom'
 import { LOG_OUT } from '../../redux/features/user_data/userSlice'
 
-const Header = () => {
+const Header = ({ open }) => {
     const [loggedIn, setLoggedIn] = useState(false)
     const dispatch = useDispatch()
     const { user } = useSelector(state => state.userData)
@@ -43,7 +43,7 @@ const Header = () => {
                 loggedIn
                     ?
                     <DivLogContainer>
-                        <BtnAddMeme><BiImageAdd /></BtnAddMeme>
+                        <BtnAddMeme onClick={open}><BiImageAdd /></BtnAddMeme>
                         <BtnLogin onClick={() => Logout()}>Log out</BtnLogin>
                         <ImgUser onClick={() => navigate('/profile')} src={user?.image?.url} alt="user" />
                     </DivLogContainer>
@@ -56,4 +56,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default memo(Header)

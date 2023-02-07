@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { BiCopyright } from 'react-icons/bi'
 import { LinkFooterPolicy, SmallFooter } from '../style/footerStyle'
 
@@ -12,4 +12,4 @@ const Footer = () => {
     )
 }
 
-export default Footer
+export default memo(Footer)

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
     DivErrorContainer,
@@ -27,4 +27,4 @@ const Error = () => {
     )
 }
 
-export default Error
+export default memo(Error)
