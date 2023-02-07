@@ -9,10 +9,10 @@ const Landing = () => {
         ['getPublicData', 'memes'],
         () => getPublicData('memes')
     )
-
+    
     return (
         status === 'loading' ? <div>Loading...</div> :
-            status === 'error' ? <div>Error: {error.message}</div> :
+            status === 'error' ? <div>Error</div> :
                 <div>
                     {memes?.map(meme => {
                         return <MemeCard key={meme._id}

@@ -21,9 +21,9 @@ const MemeCard = ({name, src, tags, owner}) => {
 
     return (
         <FigureMemeCard>
-            <BtnClipboard onClick={() => copyToClipboard(src)}><AiOutlineLink /></BtnClipboard>
             <H2Meme>{name}</H2Meme>
             <ImgMeme src={src}/>
+            <BtnClipboard onClick={() => copyToClipboard(src)}><AiOutlineLink /></BtnClipboard>
             <SmallAuthorship>by: {owner}</SmallAuthorship>
             <FigcaptionMeme>Tags: {tagList}</FigcaptionMeme>
         </FigureMemeCard>

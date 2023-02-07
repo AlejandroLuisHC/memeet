@@ -13,8 +13,8 @@ export const BtnClipboard = styled.button`
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 55px;
-    right: 10px;
+    top: 45px;
+    right: 15px;
     transition: 300ms;
 `
 export const SmallAuthorship = styled.small`
@@ -25,7 +25,7 @@ export const SmallAuthorship = styled.small`
     position: absolute;
     bottom: 60px;
     right: 10px;
-
+    transition: 300ms;
     @media ${device.desktop}{
         font-size: 1.2rem;
     }
@@ -35,9 +35,8 @@ export const FigureMemeCard = styled.figure`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 200px;
-    width: 250px;
     position: relative;
+    width: 100%;
 
     &:hover ${BtnClipboard}{
         background-color: ${color.blue};
@@ -46,21 +45,14 @@ export const FigureMemeCard = styled.figure`
         color: ${color.white};
         text-shadow: 0 0 5px ${color.black};
     }
-
-    @media ${device.desktop}{
-        height: 400px;
-        width: 500px;
-    }
 `
 export const ImgMeme = styled.img`
-    height: 130px;
-    width: 250px;
+    max-width: 250px;
     object-fit: cover;
     border-radius: 10px;
 
     @media ${device.desktop}{
-        height: 300px;
-        width: 500px;
+        max-width: 500px;
     }
 `
 export const FigcaptionMeme = styled.figcaption`
@@ -68,20 +60,17 @@ export const FigcaptionMeme = styled.figcaption`
     justify-content: center;
     align-items: center;
     height: 30px;
-    width: 250px;
     font-size: .8rem;
 
     @media ${device.desktop}{
         height: 50px;
-        width: 500px;
     }
 `
 export const H2Meme = styled.h2`
     font-size: 1.2rem;
     font-weight: 500;
     text-align: center;
-    color: ${color.white};
-    
+    color: ${color.white};    
     @media ${device.desktop}{
         font-size: 2rem;
     }

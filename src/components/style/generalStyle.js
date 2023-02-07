@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
         height: 100vh;
         width: 100vw;
         background-color: ${color.black};
+        overflow-x: hidden;
         &::-webkit-scrollbar {
             cursor: pointer;
             width: 4px;
@@ -19,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
         }
         &::-webkit-scrollbar-track {
             border-radius: 10px;
-            background: #9D9D9D;
+            background: ${color.red};
         }
         &::-webkit-scrollbar-thumb{
             border-radius: 10px;
@@ -59,11 +60,12 @@ export const HeaderStyle = styled.header`
 `
 export const MainStyle = styled.main`
     grid-column: 1;
-    grid-row: 2 / span 2;
+    grid-row: 2;
     background-color: ${color.black};
     color: ${color.white};
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
 
     @media ${device.desktop}{
         grid-column: 2;
@@ -71,7 +73,7 @@ export const MainStyle = styled.main`
     };
 `
 export const FooterStyle = styled.footer`
-    grid-column: 3;
+    grid-column: 1;
     grid-row: 3;
     color: ${color.black};
     display: grid;
