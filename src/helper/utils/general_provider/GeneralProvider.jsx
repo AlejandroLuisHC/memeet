@@ -1,5 +1,6 @@
 import StoreProvider from "../../../redux/provider/StoreProvider"
 import { Auth0Provider } from '@auth0/auth0-react'
+import QueryProvider from "../reactQuery/QueryProvider"
 
 const GeneralProvider = ({ children }) => {
     return (
@@ -9,9 +10,11 @@ const GeneralProvider = ({ children }) => {
             redirectUri={window.location.origin + '/register'}
             audience={import.meta.env.VITE_API_URL}
         >
-            <StoreProvider>
-                {children}
-            </StoreProvider>
+            <QueryProvider>
+                <StoreProvider>
+                    {children}
+                </StoreProvider>
+            </QueryProvider>
         </Auth0Provider>
     )
 }

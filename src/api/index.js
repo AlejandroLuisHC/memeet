@@ -1,5 +1,5 @@
 import getPublicData from './getPublicData';
 
-export default {
+export {
     getPublicData
 }

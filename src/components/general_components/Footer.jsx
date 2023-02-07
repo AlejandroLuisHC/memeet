@@ -1,8 +1,14 @@
 import React from 'react'
+import { BiCopyright } from 'react-icons/bi'
+import { LinkFooterPolicy, SmallFooter } from '../style/footerStyle'
 
 const Footer = () => {
     return (
-        <div>Footer</div>
+        <>
+            <SmallFooter><BiCopyright /> Alejandro L. Herrero</SmallFooter>
+            <LinkFooterPolicy to="/policy">Terms and conditions </LinkFooterPolicy>
+            <SmallFooter>Thanks for visiting</SmallFooter>
+        </>
     )
 }
 

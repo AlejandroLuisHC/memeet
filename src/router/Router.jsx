@@ -5,6 +5,14 @@ import GeneralProvider from '../helper/utils/general_provider/GeneralProvider'
 const Layout = lazy(() => import('./Layout'))
 const Landing = lazy(() => import('../pages/Landing'))
 
+const Policy = lazy(async () => {
+    const [moduleExports] = await Promise.all([
+        import("../pages/Policy"),
+        new Promise(resolve => setTimeout(resolve, 300))
+    ])
+    return moduleExports
+});
+
 const Router = () => {
     return (
         <GeneralProvider>
@@ -13,6 +21,7 @@ const Router = () => {
                     <Routes>
                         <Route path="/" element={<Layout />}>
                             <Route index element={<Landing />} />
+                            <Route path='/policy' element={<Policy />} />
                         </Route>
                     </Routes>
                 </Suspense>

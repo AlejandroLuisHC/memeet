@@ -39,7 +39,7 @@ export const DivMain = styled.div`
     grid-template: 60px 1fr 30px / 1fr;
 
     @media ${device.desktop}{
-        grid-template: 80px 1fr 50px / 1fr 5fr 1fr; 
+        grid-template: 80px 1fr 50px / 1fr 3fr 1fr; 
     };
 `
 export const HeaderStyle = styled.header`
@@ -48,6 +48,8 @@ export const HeaderStyle = styled.header`
     background-color: ${color.yellow};
     color: ${color.black};
     display: grid;
+    text-align: center;
+    align-items: center;    
     grid-template-columns: repeat(3, 1fr);
 
     @media ${device.desktop}{
@@ -57,7 +59,7 @@ export const HeaderStyle = styled.header`
 `
 export const MainStyle = styled.main`
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 2 / span 2;
     background-color: ${color.black};
     color: ${color.white};
     display: grid;
@@ -65,19 +67,22 @@ export const MainStyle = styled.main`
 
     @media ${device.desktop}{
         grid-column: 2;
-        grid-row: 2;
+        grid-row: 2 / span 2;
     };
 `
 export const FooterStyle = styled.footer`
-    grid-column: 1;
+    grid-column: 3;
     grid-row: 3;
-    background-color: ${color.yellow};
     color: ${color.black};
     display: grid;
+    text-align: center;
+    align-items: center;
     grid-template-columns: repeat(3, 1fr);
 
     @media ${device.desktop}{
-        grid-column: 1 / span 3;
+        grid-column: 3;
         grid-row: 3;
     };
 `
+
+
