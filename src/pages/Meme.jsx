@@ -3,6 +3,7 @@ import React from 'react'
 import { Toaster } from 'react-hot-toast'
 import { useOutletContext, useParams } from 'react-router-dom'
 import { getOneMeme } from '../api'
+import Spinner from '../components/general_components/spinner/Spinner'
 import MemeCard from '../components/pages_components/landing/MemeCard'
 import ModalUpload from '../components/pages_components/landing/ModalUpload'
 import { DivMemeContainer } from '../components/style/memeStyle'
@@ -16,7 +17,7 @@ const Meme = () => {
     )
 
     return (
-        (status === 'loading') ? <div>Loading...</div> :
+        (status === 'loading') ? <Spinner /> :
             (status === 'error') ? <div>Error</div> :
                 <>
                     <DivMemeContainer>

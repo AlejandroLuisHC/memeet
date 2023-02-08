@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getPublicData } from '../api'
+import Spinner from '../components/general_components/spinner/Spinner'
 import RegisterForm from '../components/pages_components/register/RegisterForm'
 import { LOG_IN } from '../redux/features/user_data/userSlice'
 
@@ -33,7 +34,7 @@ const Register = () => {
     }
 
     return (
-        (status === 'loading' || authLoading) ? <div>Loading...</div> :
+        (status === 'loading' || authLoading) ? <Spinner /> :
             status === 'error' ? <div>Error</div> :
                 checkUserExists(userAuth0, usersDB)
     )

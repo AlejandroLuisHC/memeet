@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 const Policy = () => {
     return (
         <div>
-            
+            <br/>
+            <br/>
             <h1>Privacy Policy of Memeet</h1>
 
             <p>Memeet operates the Memeet.invented.url website, which provides the SERVICE.</p>

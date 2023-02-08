@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { DivProfile, DivProfileData, ImgProfile, InputImg, LabelUpdateImg, PProfileData, SpanData } from '../components/style/profileStyle'
+import { DivProfile, DivProfileData, H2SectionMemes, ImgProfile, InputImg, LabelUpdateImg, PProfileData, SpanData } from '../components/style/profileStyle'
 import { IoMdCloudUpload } from 'react-icons/io'
 import { useForm } from 'react-hook-form'
 import { useAuth0 } from '@auth0/auth0-react'
@@ -36,7 +36,7 @@ const Profile = () => {
         const updatedUser = await patchUser(updatedData, user._id, token)
         updatedUser && dispatch(UPDATE(updatedUser))
     }
-
+    
     return (
         <DivProfile>
             <DivProfileData>
@@ -61,16 +61,17 @@ const Profile = () => {
                 </form>
             </DivProfileData>
             <section>
-                <h2>{userData.name}'s memes</h2>
+                <H2SectionMemes>{userData.name}'s memes</H2SectionMemes>
                 {userData.myMemes.length > 0 ?
                     <DivMemesContainer>
-                        {userData.myMemes.map(meme =>
+                        {userData.myMemes.slice(0).reverse().map(meme =>
                             <MemeCard key={meme._id}
                                 id={meme._id}
                                 name={meme.name}
                                 src={meme.image.url}
                                 tags={meme.tags}
                                 owner={meme.owner.name}
+                                ownerId={meme.owner._id}
                             />
                         )}
 

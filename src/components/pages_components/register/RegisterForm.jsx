@@ -40,7 +40,6 @@ const RegisterForm = ({ userAuth0, usersDB }) => {
             <FormRegister
                 onSubmit={
                     handleSubmit(data => {
-                        console.log("Handling submit", data);
                         setLoadingUser(true)
                         createUser(data)
                     })

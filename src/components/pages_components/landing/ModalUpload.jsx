@@ -1,12 +1,15 @@
 import React from 'react'
 import {
     BtnCloseModal,
+    BtnSubmitMeme,
     DivInputContainerCheckbox,
     DivModalUploadMeme,
     H3Checkbox,
     InputCheckbox,
     LabelCheckbox,
-    LabelFileMeme
+    LabelFileMeme,
+    LabelModalMeme,
+    LegendModalMeme
 } from '../../style/landingStyle'
 import {
     DivInputContainer,
@@ -14,9 +17,6 @@ import {
     FormRegister,
     InputRegister,
     InputFileRegister,
-    LabelRegister,
-    LegendRegister,
-    BtnSubmitRegister,
     PErrorInput
 } from '../../style/registerStyle'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
@@ -25,6 +25,8 @@ import { useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { getPublicData, postMeme } from '../../../api'
 import { useQuery } from '@tanstack/react-query'
+import { UPDATE } from '../../../redux/features/user_data/userSlice'
+import { useDispatch } from 'react-redux'
 
 const ModalUpload = ({ memesData, tagsData, Modal, close, refetch }) => {
     const { _id } = useSelector(state => state.userData.user)
@@ -34,6 +36,7 @@ const ModalUpload = ({ memesData, tagsData, Modal, close, refetch }) => {
         handleSubmit,
         formState: { errors },
     } = useForm();
+    const dispatch = useDispatch()
 
     const memes = memesData ?? useQuery(
         ['getPublicData', 'memes'],
@@ -58,8 +61,8 @@ const ModalUpload = ({ memesData, tagsData, Modal, close, refetch }) => {
             owner: _id            
         }
         const token = await getAccessTokenSilently()
-        const createdMeme = await postMeme(newMeme, token)
-        createdMeme && toast("A new meme was born!", { icon: '👏' });
+        const data = await postMeme(newMeme, token)
+        data && dispatch(UPDATE(data.updatedUser)) && toast("A new meme was born!", { icon: '👏' });
     }
 
     return (
@@ -76,9 +79,9 @@ const ModalUpload = ({ memesData, tagsData, Modal, close, refetch }) => {
                 }
                 >
                     <FieldsetRegister>
-                        <LegendRegister>Upload a new meme!</LegendRegister>
+                        <LegendModalMeme>Upload a new meme!</LegendModalMeme>
                         <DivInputContainer>
-                            <LabelRegister>
+                            <LabelModalMeme>
                                 Name of the meme:
                                 <InputRegister
                                     type="text"
@@ -90,7 +93,7 @@ const ModalUpload = ({ memesData, tagsData, Modal, close, refetch }) => {
                                         validate: value => !memes.find(meme => meme.name === value)
                                     })}
                                 />
-                            </LabelRegister>
+                            </LabelModalMeme>
                             {errors.name?.type === "required" && <PErrorInput>This field is required</PErrorInput>}
                             {errors.name?.type === "minLength" && <PErrorInput>Name must have at least 3 characters</PErrorInput>}
                             {errors.name?.type === "maxLength" && <PErrorInput>Name must have less than 30 characters</PErrorInput>}
@@ -132,7 +135,7 @@ const ModalUpload = ({ memesData, tagsData, Modal, close, refetch }) => {
                         </DivInputContainerCheckbox>
 
                         <DivInputContainer>
-                            <BtnSubmitRegister type="submit">Upload</BtnSubmitRegister>
+                            <BtnSubmitMeme type="submit">Upload</BtnSubmitMeme>
                         </DivInputContainer>
                         <BtnCloseModal onClick={close}><AiOutlineCloseCircle /></BtnCloseModal>
                     </FieldsetRegister>

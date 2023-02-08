@@ -3,19 +3,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
     BtnAddMeme,
     BtnLogin,
-    BtnSubmitSearchBar,
+    BtnLogout,
     DivLogContainer,
     FormSearchBar,
     H1Header,
     ImgUser,
-    InputSearchBar
+    InputSearchBar,
+    SpanLetterBlue,
+    SpanLetterRed
 } from '../style/headerStyle'
-import { AiOutlineSearch } from 'react-icons/ai'
 import { BiImageAdd } from 'react-icons/bi'
 import { useAuth0 } from '@auth0/auth0-react'
 import { createSearchParams, useNavigate } from 'react-router-dom'
 import { LOG_OUT } from '../../redux/features/user_data/userSlice'
 import { useForm } from 'react-hook-form'
+import { GiMeatCleaver } from 'react-icons/gi'
 
 const Header = ({ open }) => {
     const [loggedIn, setLoggedIn] = useState(false)
@@ -35,23 +37,25 @@ const Header = ({ open }) => {
     const {
         register,
         handleSubmit,
-        formState: { errors },
     } = useForm();
 
     return (
         <>
-            <H1Header onClick={() => navigate('/')}>Memeet</H1Header>
+            <H1Header onClick={() => navigate('/')}>
+                Mem<SpanLetterBlue>e</SpanLetterBlue><SpanLetterRed>ǝ</SpanLetterRed>t 
+                <GiMeatCleaver />
+            </H1Header>
             <FormSearchBar onChange={
                 handleSubmit(data => {
                     navigate({ pathname: '/', search: `?${createSearchParams(data)}` })
                 })
             }>
-                <InputSearchBar 
-                    type="text" 
+                <InputSearchBar
+                    type="text"
                     placeholder="Search a meme"
-                    {...register("search", { 
+                    {...register("search", {
                         required: true,
-                        minLength: 3             
+                        minLength: 3
                     })}
                 />
             </FormSearchBar>
@@ -60,8 +64,8 @@ const Header = ({ open }) => {
                     ?
                     <DivLogContainer>
                         <BtnAddMeme onClick={open}><BiImageAdd /></BtnAddMeme>
-                        <BtnLogin onClick={() => Logout()}>Log out</BtnLogin>
                         <ImgUser onClick={() => navigate('/profile')} src={user?.image?.url} alt="user" />
+                        <BtnLogout onClick={() => Logout()}>Log out</BtnLogout>
                     </DivLogContainer>
                     :
                     <DivLogContainer>

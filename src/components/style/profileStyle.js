@@ -17,6 +17,7 @@ export const DivProfileData = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-bottom: 20px;
 `
 export const PProfileData = styled.p`
     font-size: 1.2rem;
@@ -53,5 +54,12 @@ export const ImgProfile = styled.img`
     height: 250px;
     border-radius: 50%;
     object-fit: cover;
+`
+export const H2SectionMemes = styled.section`
+    font-size: 2rem;
+    font-weight: bold;
+    color: ${color.white};
+    margin-bottom: 20px;
+    text-align: center;
 `
 

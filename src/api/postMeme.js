@@ -1,5 +1,4 @@
 const postMeme = async (data, token) => {
-    console.log("DATA", data);
     const formData = new FormData()
     formData.append('image', data.image[0])
     formData.append('name', data.name)

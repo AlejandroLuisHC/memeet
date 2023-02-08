@@ -18,6 +18,7 @@ import {
     DivTagFilterBtns
 } from '../components/style/landingStyle'
 import { ImArrowUp } from 'react-icons/im'
+import Spinner from '../components/general_components/spinner/Spinner'
 
 const Landing = () => {
     const [Modal, , close] = useOutletContext()
@@ -56,12 +57,14 @@ const Landing = () => {
                 src={meme.image.url}
                 tags={meme.tags}
                 owner={meme.owner.name}
+                ownerId={meme.owner._id}
+                refetch={refetch}
             />
         )
     }
 
     return (
-        (status === 'loading' || statusTags === 'loading') ? <div>Loading...</div> :
+        (status === 'loading' || statusTags === 'loading') ? <Spinner />:
             (status === 'error' || statusTags === 'error') ? <div>Error</div> :
                 <>
                     <DivTagFilterBtns>
@@ -117,7 +120,7 @@ const Landing = () => {
                                     return memeCard(meme)
                                 }
                             }
-                        })}
+                        })}               
                     </DivMemesContainer>
                     <Toaster
                         position="bottom-right"

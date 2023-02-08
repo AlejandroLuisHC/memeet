@@ -5,41 +5,56 @@ export const BtnLogin = styled.button`
     background-color: ${color.yellow};
     color: ${color.black};
     border: none;
+    height: 45px;
+    font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1.2rem;
     padding: 5px 10px;
     transition: 300ms;
     &:hover{
-        background-color: ${color.black};
-        color: ${color.yellow};
+        background-color: ${color.blue};
+        color: ${color.black};
     }
     @media ${device.mobile}{
         width: 100px
     }
 `
-export const H1Header = styled.h1`  
-    grid-column: 1;
-    font-size: 2rem;
-    cursor: pointer;
-    transition: 200ms;
-
+export const BtnLogout = styled(BtnLogin)`
     &:hover{
-        color: ${color.white};
-        text-shadow: 0 0 10px ${color.black};
+        background-color: ${color.red};
+        color: ${color.black};
     }
+`
+export const SpanLetterBlue = styled.span`
+    color: ${color.blue};
+`
+export const SpanLetterRed = styled.span`
+    color: ${color.red};
+`
+export const H1Header = styled.h1`
+    grid-column: 1;
+    font-size: 2.8rem; 
+    cursor: pointer;
+    border-radius: 0 10px 10px 0;
+    transition: 300ms;
     @media ${device.mobile}{
         display: none
+    }
+    &:hover{
+        color: ${color.yellow};
+        background-color: ${color.black};
     }
 `
 
 export const InputSearchBar = styled.input`
-    background-color: ${color.black};
-    color: ${color.white};
-    border: none;
+    background-color: ${color.white};
+    color: ${color.black};
+    border: 3px solid ${color.black};
     width: 80%;
-    border-radius: 5px;
-    font-size: 1.2rem;
+    height: 45px;
+    border-radius: 10px;
+    font-size: 1.3rem;
     padding: 5px 10px;
     transition: all 0.3s ease-in-out;
     &:focus{
@@ -93,20 +108,31 @@ export const BtnFilterDropdown = styled.button`
     }
 `
 export const BtnAddMeme = styled.button`
-    background-color: ${color.yellow};
-    color: ${color.black};
+    background-color: ${color.black};
+    color: ${color.yellow};
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
+    height: 45px;
     cursor: pointer;
-    font-size: 1.8rem;
-    padding: 5px 10px;
+    font-size: 1.5rem;
+    gap: 5px;
+    font-weight: bold;
+    padding: 7px;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease-in-out;
     &:hover{
-        background-color: ${color.black};
-        color: ${color.yellow};
+        background-color: ${color.blue};
+        color: ${color.black};
+    }
+    @media ${device.desktop}{
+        ::Before {
+            content: "Upload";
+        }
+    }
+    @media ${device.mobile}{
+        min-width: 45px;
     }
 `
 export const ImgUser = styled.img`
@@ -126,11 +152,16 @@ export const ImgUser = styled.img`
 export const DivLogContainer = styled.div`
     grid-column: 3;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: end;
     align-items: center;
     width: 100%;
     height: 100%;
-    padding: 0 5px;
+    padding: 0 45px;
+    gap: 50px;
+    @media ${device.mobile}{
+        gap: 10px;
+        padding: 0 10px;
+    }
 `
 
 
