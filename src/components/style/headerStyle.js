@@ -46,7 +46,7 @@ export const InputSearchBar = styled.input`
         outline: none;
     }
 `
-export const DivSearchBarContainer = styled.div`
+export const FormSearchBar = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;

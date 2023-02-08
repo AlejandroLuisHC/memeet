@@ -30,6 +30,7 @@ const Layout = () => {
             <FooterStyle>
                 <Footer />
             </FooterStyle>
+            
         </DivMain>
     )
 }

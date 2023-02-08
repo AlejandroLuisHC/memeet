@@ -27,6 +27,13 @@ const Profile = lazy(async () => {
     ])
     return moduleExports
 });
+const Meme = lazy(async () => {
+    const [moduleExports] = await Promise.all([
+        import("../pages/Meme"),
+        new Promise(resolve => setTimeout(resolve, 300))
+    ])
+    return moduleExports
+});
 
 const Router = () => {
     return (
@@ -39,6 +46,7 @@ const Router = () => {
                             <Route path='/policy' element={<Policy />} />
                             <Route path='/register' element={<Register />} />
                             <Route path='/profile' element={<PrivateRoutes><Profile /></PrivateRoutes>} />
+                            <Route path='/meme/:id' element={<Meme />} />
                         </Route>
                     </Routes>
                 </Suspense>

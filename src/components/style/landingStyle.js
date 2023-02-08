@@ -2,8 +2,8 @@ import styled from "styled-components"
 import { color, device } from "./utils/styleConstants"
 
 export const BtnClipboard = styled.button`
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
     border-radius: 50%;
     font-size: 1.2rem;
     background-color: ${color.whiteFade};
@@ -13,9 +13,14 @@ export const BtnClipboard = styled.button`
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 45px;
+    top: 25px;
     right: 15px;
     transition: 300ms;
+    @media ${device.desktop}{
+        height: 30px;
+        width: 30px;
+        top: 45px;        
+    }
 `
 export const SmallAuthorship = styled.small`
     font-size: .8rem;
@@ -36,7 +41,6 @@ export const FigureMemeCard = styled.figure`
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 100%;
 
     &:hover ${BtnClipboard}{
         background-color: ${color.blue};
@@ -70,9 +74,13 @@ export const H2Meme = styled.h2`
     font-size: 1.2rem;
     font-weight: 500;
     text-align: center;
-    color: ${color.white};    
+    color: ${color.white}; 
+    cursor: pointer;   
     @media ${device.desktop}{
         font-size: 2rem;
+    }
+    &:hover{
+        color: ${color.blue};
     }
 `
 export const DivModalUploadMeme = styled.div`
@@ -158,5 +166,37 @@ export const BtnCloseModal = styled.button`
         color: ${color.red};
     }
 `
-
+export const DivMemesContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+    padding: 10px;
+    @media ${device.desktop}{
+        gap: 30px;
+        padding: 20px 0;
+    }
+`
+export const BtnGoToTop = styled.button`
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: ${color.white};
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 300ms;
+    &:hover{
+        background-color: ${color.blue};
+    }
+`
 

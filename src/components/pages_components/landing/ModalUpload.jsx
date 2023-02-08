@@ -23,9 +23,10 @@ import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
-import { postMeme } from '../../../api'
+import { getPublicData, postMeme } from '../../../api'
+import { useQuery } from '@tanstack/react-query'
 
-const ModalUpload = ({ memes, tags, Modal, close, refetch }) => {
+const ModalUpload = ({ memesData, tagsData, Modal, close, refetch }) => {
     const { _id } = useSelector(state => state.userData.user)
     const { getAccessTokenSilently } = useAuth0()
     const {
@@ -33,6 +34,16 @@ const ModalUpload = ({ memes, tags, Modal, close, refetch }) => {
         handleSubmit,
         formState: { errors },
     } = useForm();
+
+    const memes = memesData ?? useQuery(
+        ['getPublicData', 'memes'],
+        () => getPublicData('memes')
+    ).data
+    const tags = tagsData ?? useQuery(
+        ['getPublicData', 'tags'],
+        () => getPublicData('tags')
+    ).data
+
     const createMeme = async ({
         name,
         image,
@@ -59,7 +70,7 @@ const ModalUpload = ({ memes, tags, Modal, close, refetch }) => {
                         createMeme(data)
                         close()
                         setTimeout(() => {
-                            refetch()
+                            refetch && refetch()
                         }, 1000)
                     })
                 }
@@ -104,7 +115,7 @@ const ModalUpload = ({ memes, tags, Modal, close, refetch }) => {
                         <H3Checkbox>Add some tags to your meme:</H3Checkbox>
                         <DivInputContainerCheckbox>
                             {
-                                tags.map(tag =>
+                                tags?.map(tag =>
                                     <LabelCheckbox key={tag._id}
                                         htmlFor={tag.name}
                                     >

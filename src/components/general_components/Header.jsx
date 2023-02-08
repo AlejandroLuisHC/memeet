@@ -5,7 +5,7 @@ import {
     BtnLogin,
     BtnSubmitSearchBar,
     DivLogContainer,
-    DivSearchBarContainer,
+    FormSearchBar,
     H1Header,
     ImgUser,
     InputSearchBar
@@ -13,8 +13,9 @@ import {
 import { AiOutlineSearch } from 'react-icons/ai'
 import { BiImageAdd } from 'react-icons/bi'
 import { useAuth0 } from '@auth0/auth0-react'
-import { useNavigate } from 'react-router-dom'
+import { createSearchParams, useNavigate } from 'react-router-dom'
 import { LOG_OUT } from '../../redux/features/user_data/userSlice'
+import { useForm } from 'react-hook-form'
 
 const Header = ({ open }) => {
     const [loggedIn, setLoggedIn] = useState(false)
@@ -26,19 +27,35 @@ const Header = ({ open }) => {
         }
     }, [user._id])
     const { loginWithRedirect, logout } = useAuth0();
-
     const Logout = () => {
         logout()
         dispatch(LOG_OUT())
     }
     const navigate = useNavigate();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+
     return (
         <>
             <H1Header onClick={() => navigate('/')}>Memeet</H1Header>
-            <DivSearchBarContainer>
-                <InputSearchBar type="text" placeholder="Search" />
-                <BtnSubmitSearchBar><AiOutlineSearch /></BtnSubmitSearchBar>
-            </DivSearchBarContainer>
+            <FormSearchBar onSubmit={
+                handleSubmit(data => {
+                    navigate({ pathname: '/', search: `?${createSearchParams(data)}` })
+                })
+            }>
+                <InputSearchBar 
+                    type="text" 
+                    placeholder="Search a meme"
+                    {...register("search", { 
+                        required: true,
+                        minLength: 3             
+                    })}
+                />
+                <BtnSubmitSearchBar type="submit"><AiOutlineSearch /></BtnSubmitSearchBar>
+            </FormSearchBar>
             {
                 loggedIn
                     ?
@@ -47,7 +64,7 @@ const Header = ({ open }) => {
                         <BtnLogin onClick={() => Logout()}>Log out</BtnLogin>
                         <ImgUser onClick={() => navigate('/profile')} src={user?.image?.url} alt="user" />
                     </DivLogContainer>
-                    : 
+                    :
                     <DivLogContainer>
                         <BtnLogin onClick={() => loginWithRedirect()}>Log in / Sign up</BtnLogin>
                     </DivLogContainer>

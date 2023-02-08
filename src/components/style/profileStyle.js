@@ -3,16 +3,20 @@ import { color, device } from "./utils/styleConstants";
 
 export const DivProfile = styled.div`
     display: flex;
-    flex-direction: column;
     align-items: flex-start;
+    flex-wrap: wrap;
     gap: 30px;
     justify-content: start;
     width: 100%;
     height: 100%;
     padding: 20px 20px 0;
-    @media ${device.desktop}{
-        width: 50%
-    }
+`
+export const DivProfileData = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 `
 export const PProfileData = styled.p`
     font-size: 1.2rem;

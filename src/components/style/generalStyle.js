@@ -63,9 +63,8 @@ export const MainStyle = styled.main`
     grid-row: 2;
     background-color: ${color.black};
     color: ${color.white};
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
 
     @media ${device.desktop}{
         grid-column: 2;
