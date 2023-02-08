@@ -41,7 +41,7 @@ const Header = ({ open }) => {
     return (
         <>
             <H1Header onClick={() => navigate('/')}>Memeet</H1Header>
-            <FormSearchBar onSubmit={
+            <FormSearchBar onChange={
                 handleSubmit(data => {
                     navigate({ pathname: '/', search: `?${createSearchParams(data)}` })
                 })
@@ -54,7 +54,6 @@ const Header = ({ open }) => {
                         minLength: 3             
                     })}
                 />
-                <BtnSubmitSearchBar type="submit"><AiOutlineSearch /></BtnSubmitSearchBar>
             </FormSearchBar>
             {
                 loggedIn

@@ -173,12 +173,9 @@ export const DivMemesContainer = styled.div`
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
-    height: 100%;
     gap: 10px;
-    padding: 10px;
     @media ${device.desktop}{
         gap: 30px;
-        padding: 20px 0;
     }
 `
 export const BtnGoToTop = styled.button`
@@ -199,4 +196,57 @@ export const BtnGoToTop = styled.button`
         background-color: ${color.blue};
     }
 `
+export const BtnGoLanding = styled.button`
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: ${color.yellow};  
+    border: none;
+    margin: 10px auto;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 300ms;
+    &:hover{
+        background-color: ${color.red};
+    }
+`
+export const DivTagFilterBtns = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+`
+export const BtnTagFilter = styled.button`
+    width: auto;
+    padding: 0 10px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: ${color.white};
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 300ms;
+    &:hover{
+        background-color: ${color.blue};
+    }
+`
+export const BtnTagFilterActive = styled(BtnTagFilter)`
+    background-color: ${color.blue};
+    &:hover{
+        background-color: ${color.red};
+    }
+`
+    
 

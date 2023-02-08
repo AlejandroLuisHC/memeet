@@ -38,7 +38,8 @@ export const DivMain = styled.div`
     display: grid;
     min-height: 100vh;
     grid-template: 60px 1fr 30px / 1fr;
-
+    justify-content: center;
+    
     @media ${device.desktop}{
         grid-template: 80px 1fr 50px / 1fr 3fr 1fr; 
     };
