@@ -217,6 +217,7 @@ export const DivMemesContainer = styled.div`
     align-items: flex-start;
     flex-wrap: wrap;
     width: 100%;
+    margin-top: 45px;
     gap: 10px;
     @media ${device.desktop}{
         gap: 30px;
