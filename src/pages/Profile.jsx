@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { DivProfile, DivProfileData, H2SectionMemes, ImgProfile, InputImg, LabelUpdateImg, PProfileData, SpanData } from '../components/style/profileStyle'
-import { IoMdCloudUpload } from 'react-icons/io'
+import { IoMdCloudUpload } from '@react-icons/all-files/io/IoMdCloudUpload'
 import { useForm } from 'react-hook-form'
 import { useAuth0 } from '@auth0/auth0-react'
 import { UPDATE } from '../redux/features/user_data/userSlice'

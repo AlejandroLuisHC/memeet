@@ -9,11 +9,12 @@ import {
     BtnDeleteMeme,
     BtnConfirmDeleteMeme
 } from '../../style/landingStyle'
-import { AiOutlineLink } from 'react-icons/ai'
+import { AiOutlineLink } from '@react-icons/all-files/ai/AiOutlineLink'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { AiFillDelete, AiFillWarning } from 'react-icons/ai'
+import { AiFillDelete } from '@react-icons/all-files/ai/AiFillDelete'
+import { AiFillWarning } from '@react-icons/all-files/ai/AiFillWarning'
 import { useAuth0 } from '@auth0/auth0-react'
 import { deleteMeme, getOneUser } from '../../../api'
 import { UPDATE } from '../../../redux/features/user_data/userSlice'

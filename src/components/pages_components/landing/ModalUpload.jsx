@@ -19,7 +19,7 @@ import {
     InputFileRegister,
     PErrorInput
 } from '../../style/registerStyle'
-import { AiOutlineCloseCircle } from 'react-icons/ai'
+import { AiOutlineCloseCircle } from '@react-icons/all-files/ai/AiOutlineCloseCircle'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
@@ -27,8 +27,10 @@ import { getPublicData, postMeme } from '../../../api'
 import { useQuery } from '@tanstack/react-query'
 import { UPDATE } from '../../../redux/features/user_data/userSlice'
 import { useDispatch } from 'react-redux'
+import { useOutletContext } from 'react-router-dom'
 
-const ModalUpload = ({ memesData, tagsData, Modal, close, refetch }) => {
+const ModalUpload = ({ memesData, tagsData, refetch }) => {
+    const { Modal, close } = useOutletContext()
     const { _id } = useSelector(state => state.userData.user)
     const { getAccessTokenSilently } = useAuth0()
     const {

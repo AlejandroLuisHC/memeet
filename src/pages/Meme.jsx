@@ -9,7 +9,7 @@ import ModalUpload from '../components/pages_components/landing/ModalUpload'
 import { DivMemeContainer } from '../components/style/memeStyle'
 
 const Meme = () => {
-    const [Modal, , close] = useOutletContext()
+    const { Modal, close } = useOutletContext()
     const { id } = useParams()
     const { data: meme, status } = useQuery(
         ['meme', id],

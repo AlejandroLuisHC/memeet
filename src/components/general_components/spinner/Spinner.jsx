@@ -1,5 +1,5 @@
 import React from 'react'
-import { GiMeatCleaver } from 'react-icons/gi'
+import { GiMeatCleaver } from '@react-icons/all-files/gi/GiMeatCleaver'
 import { DivSpinner } from '../../style/landingStyle'
 
 const Spinner = () => {

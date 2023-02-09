@@ -1,14 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
-import React, { useState } from 'react'
+import React, { lazy, Suspense, useState } from 'react'
 import { Toaster } from 'react-hot-toast'
 import {
     useLocation,
     useNavigate,
-    useOutletContext
 } from 'react-router-dom'
 import { getPublicData } from '../api'
 import MemeCard from '../components/pages_components/landing/MemeCard'
-import ModalUpload from '../components/pages_components/landing/ModalUpload'
 import {
     BtnGoLanding,
     BtnGoToTop,
@@ -17,11 +15,11 @@ import {
     DivMemesContainer,
     DivTagFilterBtns
 } from '../components/style/landingStyle'
-import { ImArrowUp } from 'react-icons/im'
+import { ImArrowUp } from '@react-icons/all-files/im/ImArrowUp'
 import Spinner from '../components/general_components/spinner/Spinner'
+const ModalUpload = lazy(() => import('../components/pages_components/landing/ModalUpload'))
 
 const Landing = () => {
-    const [Modal, , close] = useOutletContext()
     const navigate = useNavigate()
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search)
@@ -126,13 +124,13 @@ const Landing = () => {
                         position="bottom-right"
                         reverseOrder={false}
                     />
-                    <ModalUpload
-                        memesData={memes}
-                        tagsData={tags}
-                        Modal={Modal}
-                        close={close}
-                        refetch={refetch}
-                    />
+                    <Suspense fallback={<Spinner />}>
+                        <ModalUpload
+                            memesData={memes}
+                            tagsData={tags}
+                            refetch={refetch}
+                        />
+                    </Suspense>
                     {showButton && (
                         <BtnGoToTop
                             style={{

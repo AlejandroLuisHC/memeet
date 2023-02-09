@@ -1,6 +1,5 @@
 import React, { Suspense, lazy } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Spinner from '../components/general_components/spinner/Spinner'
 import GeneralProvider from '../helper/utils/general_provider/GeneralProvider'
 
 const Layout = lazy(() => import('./Layout'))

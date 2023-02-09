@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { BiCopyright } from 'react-icons/bi'
+import { BiCopyright } from '@react-icons/all-files/bi/BiCopyright'
 import { LinkFooterPolicy, SmallFooter } from '../style/footerStyle'
 
 const Footer = () => {

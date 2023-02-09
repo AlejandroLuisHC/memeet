@@ -24,7 +24,7 @@ const Layout = () => {
             </HeaderStyle>
             <MainStyle>
                 <Outlet
-                    context={[Modal, open, close, isOpen]}
+                    context={{Modal, open, close, isOpen}}
                 />
             </MainStyle>
             <FooterStyle>

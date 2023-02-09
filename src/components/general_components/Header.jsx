@@ -12,12 +12,12 @@ import {
     SpanLetterBlue,
     SpanLetterRed
 } from '../style/headerStyle'
-import { BiImageAdd } from 'react-icons/bi'
+import { BiImageAdd } from '@react-icons/all-files/bi/BiImageAdd'
 import { useAuth0 } from '@auth0/auth0-react'
 import { createSearchParams, useNavigate } from 'react-router-dom'
 import { LOG_OUT } from '../../redux/features/user_data/userSlice'
 import { useForm } from 'react-hook-form'
-import { GiMeatCleaver } from 'react-icons/gi'
+import { GiMeatCleaver } from '@react-icons/all-files/gi/GiMeatCleaver'
 
 const Header = ({ open }) => {
     const [loggedIn, setLoggedIn] = useState(false)

@@ -17,9 +17,12 @@ export const DivSpinner = styled.div`
             transform: rotate(0deg);
             color: ${color.red}; 
         }
+        50% {
+            color: ${color.blue};
+        }
         100% { 
             transform: rotate(360deg);
-            color: ${color.blue}; 
+            color: ${color.red}; 
         }
     }
     animation: spin 1s linear infinite;
@@ -94,7 +97,7 @@ export const ImgMeme = styled.img`
     border-radius: 10px;
 
     @media ${device.desktop}{
-        max-width: 500px;
+        max-width: 400px;
     }
 `
 export const FigcaptionMeme = styled.figcaption`
