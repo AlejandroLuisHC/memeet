@@ -1,4 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CodeFactor](https://www.codefactor.io/repository/github/alejandroluishc/memeet/badge)](https://www.codefactor.io/repository/github/alejandroluishc/memeet)
 # Memeet 
 ![Memeet](https://gifybucket.s3.eu-west-1.amazonaws.com/memeat+banner.png) <br/>
 This website is a platform for users to view, search, and upload image documents, such as memes. Users can browse a vast collection of images, and once registered, they can contribute their own content to the platform.
